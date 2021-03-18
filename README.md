@@ -21,6 +21,8 @@ where "-- path" is path of the image.
 
 ## Interface
 
+### meme.py
+
 Driven by 'meme.py' script. Run 'python meme.py ... ... ...' at the command
 line to invoke the program that will call the code.
 
@@ -48,6 +50,8 @@ $ python3 meme.py --body '"I am a dog"'  --author "Travis Barker"
 $ python3 meme.py --path "./_data/photos/dog/xander_1.jpg"
 ./static/memes\outputmeme_6213.jpg
 ```
+
+### app.py
 
 invoking 'app.py' script runs the flask server. user may generate random memes
 or create a meme by supplying arguments in the web form.
