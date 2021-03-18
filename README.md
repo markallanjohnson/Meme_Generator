@@ -34,17 +34,17 @@ pdftotext may be downloaded from https://www.xpdfreader.com/download.html.
 ex:
 
 '''
-# random meme
+random meme
 $ python3 meme.py
 ./static/memes\outputmeme_8815.jpg
 
-# Using random image, apply this quote: "I'm a dog" - Travis Barker
-# Note that if you specify a quote, you must also specify an author and
-# vice versa.
+Using random image, apply this quote: "I'm a dog" - Travis Barker
+Note that if you specify a quote, you must also specify an author and
+vice versa.
 $ python3 meme.py --body '"I am a dog"'  --author "Travis Barker"
 ./static/memes\outputmeme_5730.jpg
 
-# You can also specify an image using its path
+You can also specify an image using its path
 $ python3 meme.py --path "./_data/photos/dog/xander_1.jpg"
 ./static/memes\outputmeme_6213.jpg
 '''
@@ -56,12 +56,12 @@ ex:
 
 '''
 $ python3 app.py
-* Serving Flask app "app" (lazy loading)
-* Environment: production
+Serving Flask app "app" (lazy loading)
+Environment: production
   WARNING: This is a development server. Do not use it in a production deployment.
   Use a production WSGI server instead.
-* Debug mode: off
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+Debug mode: off
+Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 '''
 User must then navigate to http://127.0.0.1:5000/ in a web browser to access
 content.
