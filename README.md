@@ -8,9 +8,9 @@ Python code that implements a command-line tool, as well as Flask, to generate
 and save memes. Memes created from random quotes contained within
 ./_data/DogQuotes as well as a random image from ./_data/photos/dog. Quotes and
 Image may also be specified by user in command line. Custom meme may be created
-by user in Flask.
+by user in web browser.
 
-Optional CLI arguments:
+Optional Command Line Interface arguments:
 -h, --help
 --path
 --body
