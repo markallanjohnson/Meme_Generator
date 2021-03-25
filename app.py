@@ -24,7 +24,8 @@ def setup():
     quotes = []
     for file in quote_files:
         parsed = parser.parse(file)
-        quotes.append(parsed)
+        if parsed != []:
+            quotes.append(parsed)
 
     images_path = "./_data/photos/dog/"
 
