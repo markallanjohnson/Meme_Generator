@@ -19,7 +19,6 @@ class TXTIngestor(IngestorInterface):
 
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
-            return False
 
         quotes = []
 

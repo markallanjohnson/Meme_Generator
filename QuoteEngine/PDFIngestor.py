@@ -24,7 +24,6 @@ class PDFIngestor(IngestorInterface):
 
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception.')
-            return False
 
         temp_file = f'{randint(0,1000000)}.txt'
         cmd = ['pdftotext','-layout', path, temp_file]

@@ -19,7 +19,6 @@ class DOCXIngestor(IngestorInterface):
 
         if not cls.can_ingest(path):
             raise Exception('Cannot ingest exception.')
-            return False
 
         quotes = []
 
