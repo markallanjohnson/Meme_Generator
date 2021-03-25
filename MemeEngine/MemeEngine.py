@@ -35,7 +35,7 @@ class MemeEngine:
         w, h = image.size
         image.thumbnail([width, h], Image.ANTIALIAS)
         if width > 500:
-            return Exception("Maximum width is 500px.")
+            width = 500
 
         draw = ImageDraw.Draw(image)
         quote = f'{text} - {author}'
