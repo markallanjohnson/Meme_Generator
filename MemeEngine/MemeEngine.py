@@ -31,11 +31,13 @@ class MemeEngine:
         except Exception("Not a valid image path."):
             return
 
+        if width > 500:
+            width = 500
+            print("Width Set to max size, 500px.")
+            
         image = Image.open(img_path)
         w, h = image.size
         image.thumbnail([width, h], Image.ANTIALIAS)
-        if width > 500:
-            width = 500
 
         draw = ImageDraw.Draw(image)
         quote = f'{text} - {author}'
