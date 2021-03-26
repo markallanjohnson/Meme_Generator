@@ -23,7 +23,6 @@ class MemeEngine:
             d {width} -- defaults to 500. maxwidth is also 500 (int)
         Raises:
             Exception: If file path is not valid.
-            Exception: If width greater than 500.
             """
 
         try:
@@ -33,8 +32,11 @@ class MemeEngine:
 
         if width > 500:
             width = 500
-            print("Width Set to max size, 500px.")
-            
+            print("Width set to maximum size, 500px")
+        elif width <= 0:
+            width = 500
+            print("Width must be a positive value. Width set to 500px")
+
         image = Image.open(img_path)
         w, h = image.size
         image.thumbnail([width, h], Image.ANTIALIAS)
@@ -49,8 +51,17 @@ class MemeEngine:
             quote = quote.encode('latin-1', 'replace')
 
         text_w, text_h = draw.textsize(quote)
-        width_pos = randint(0, width - text_w)
-        height_pos = randint(0, min(500, h) - text_h)
+
+        try:
+            width_pos = randint(0, width - text_w)
+        except Exception:
+            width_pos = 0
+
+        try:
+            height_pos = randint(0, min(500, h) - text_h)
+        except Exception:
+            height_pos = 0
+
         draw.text((width_pos, height_pos), quote, (255,255,255))
         output_file_name = os.path.join(self.output_dir,
                                'memes',
