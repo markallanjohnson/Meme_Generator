@@ -52,17 +52,22 @@ class MemeEngine:
 
         text_w, text_h = draw.textsize(quote)
 
-        try:
-            width_pos = randint(0, width - text_w)
-        except Exception:
-            width_pos = 0
+        #TODO: make sure letters aren't cut off from words. May need to use
+        # array
+        line_count = 1
+        lines = int(text_w / width) + 1
+        line_length = int(text_w / lines)
+        width_pos = randint(0, width - line_length)
+        height_pos = randint(0, min(500, h) - text_h)
+        quote_length = len(quote) / lines
+        while line_count <= lines:
+            start = int((line_count - 1) * quote_length)
+            stop = int(line_count * quote_length)
+            line = quote[start:stop]
+            draw.text((width_pos, height_pos + line_count * text_h), line,
+                      (255,255,255))
+            line_count += 1
 
-        try:
-            height_pos = randint(0, min(500, h) - text_h)
-        except Exception:
-            height_pos = 0
-
-        draw.text((width_pos, height_pos), quote, (255,255,255))
         output_file_name = os.path.join(self.output_dir,
                                'memes',
                                "outputmeme_{}.jpg".format(randint(0,10000)))
