@@ -88,6 +88,10 @@ def meme_post():
 
     return render_template('meme.html', path=path)
 
+@app.errorhandler(500)
+def internal_server_error(e):
+    """Create 500 error handler."""
+    return render_template('500.html'), 500
 
 if __name__ == "__main__":
     app.run()
