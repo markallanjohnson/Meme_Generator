@@ -91,6 +91,8 @@ def meme_post():
 @app.errorhandler(500)
 def internal_server_error(e):
     """Create 500 error handler."""
+    os.remove('./tmp/images/temp_img.jpg')
+    os.remove(f'./tmp/quotes/temp_txt.txt')
     return render_template('500.html'), 500
 
 if __name__ == "__main__":
