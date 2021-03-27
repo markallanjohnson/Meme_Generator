@@ -52,21 +52,32 @@ class MemeEngine:
 
         text_w, text_h = draw.textsize(quote)
 
-        #TODO: make sure letters aren't cut off from words. May need to use
-        # array
-        line_count = 1
-        lines = int(text_w / width) + 1
-        line_length = int(text_w / lines)
-        width_pos = randint(0, width - line_length)
-        height_pos = randint(0, min(500, h) - text_h)
-        quote_length = len(quote) / lines
-        while line_count <= lines:
-            start = int((line_count - 1) * quote_length)
-            stop = int(line_count * quote_length)
-            line = quote[start:stop]
-            draw.text((width_pos, height_pos + line_count * text_h), line,
-                      (255,255,255))
-            line_count += 1
+        #feels like this could be improved...
+        print(f'text_w: {text_w}')
+        print(f'width: {width}')
+        if text_w < width:
+            x_pos = randint(0, width - text_w)
+            y_pos = randint(0, min(500, h) - text_h)
+            draw.text((x_pos, y_pos), quote, (255,255,255))
+        else:
+            quote_list = quote.split()
+            x_cursor = 0
+            lines = int(text_w / width) + 1
+            height = int(lines * text_h)
+            temp_x = 0
+            y_cursor = randint(0, min(500, h) - height)
+            temp_width = width
+            for word in quote_list:
+                word_width = draw.textsize(word)[0]
+                temp_word_width = word_width
+                space_width = draw.textsize(" ")[0]
+                if x_cursor + word_width >= width:
+                    y_cursor += text_h
+                    temp_x = temp_width - temp_word_width
+                draw.text((x_cursor - temp_x, y_cursor), word,
+                          (255,255,255))
+                x_cursor += word_width + space_width - temp_x
+                temp_x = 0
 
         output_file_name = os.path.join(self.output_dir,
                                'memes',
